@@ -2,5 +2,5 @@
 
 link
 
-[AlgoNote]: https://github.com/DeanAlkene/DeanAlkene.github.io/blob/master/algo/AlgoNote.md
+[AlgoNote] (https://github.com/DeanAlkene/DeanAlkene.github.io/blob/master/algo/AlgoNote.md)
 
