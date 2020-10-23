@@ -149,6 +149,121 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/23/Paper-Reading-Note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hongzhou Liu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dean's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/23/Paper-Reading-Note/" class="post-title-link" itemprop="url">Paper Reading Note</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-10-23 23:30:48 / Modified: 23:31:54" itemprop="dateCreated datePublished" datetime="2020-10-23T23:30:48+08:00">2020-10-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="paper-reading">Paper Reading</h1>
+<h2 id="neurosurgeon-asplos-2017">1. Neurosurgeon <span class="citation" data-cites="ASPLOS">@ASPLOS</span> 2017</h2>
+<p>研究背景：</p>
+<ul>
+<li>大量的人工智能应用采用了深度神经网络（DNN）</li>
+<li>DNN的推理计算是非常消耗计算资源的任务</li>
+<li>当前（论文完成时）的解决方案是在云端进行全部处理</li>
+<li>移动端的计算能力越来越强：考虑将一部分计算任务交给移动端处理，而不是全部在云端进行</li>
+</ul>
+<p>当前解决方案——云端处理</p>
+<ul>
+<li>通常情况下，数据传输的时延高于计算时延</li>
+<li>云端处理有着非常大的计算优势，但往往被数据传输带来的消耗抵消</li>
+<li>本地移动处理时延低、能量消耗小</li>
+</ul>
+<p>层级粒度的计算分割</p>
+<ul>
+<li>以典型CV应用为例：前卷积后全连接
+<ul>
+<li>在不同位置的不同类型的神经网络层，有着不同的计算和数据特性</li>
+<li>在移动GPU上，卷积和池化层的时延小，而全连接层的时延大</li>
+<li>卷积层常出现在网络的前端，而全连接常在后端</li>
+<li>由于池化层的存在，在网络后端的数据大小往往小于输入</li>
+<li>前端减少数据大小&amp;后端层均时延大==&gt;本地处理前端、云处理后端</li>
+</ul></li>
+<li>降低时延的分割：
+<ul>
+<li>在移动端进行减少数据大小&amp;计算时延低的计算过程，后传输至云端</li>
+<li>在云端进行时延较大的计算过程</li>
+</ul></li>
+<li>降低能量消耗的分割：恰当的分割能减少能量消耗（相较全云端处理）</li>
+<li>更多领域的DNN：
+<ul>
+<li>卷积和池化带来的数据大小变化--&gt;计算量的变化</li>
+<li>只有全连接层的网络（语音、NLP），每层时延和数据大小变化不大</li>
+<li><strong>划分网络要考虑网络的拓扑结构和组成的网络层类型</strong></li>
+</ul></li>
+</ul>
+<p>Neurosurgeon系统</p>
+<ul>
+<li>部署阶段：对移动设备和云端设备的性能进行测量，并生成回归模型（对数回归）</li>
+<li>运行时：
+<ul>
+<li>分析神经网络结构、组成</li>
+<li>使用模型估计时延&amp;能耗</li>
+<li>结合网络带宽和数据中心载荷选择最佳分割点</li>
+<li>分段执行</li>
+</ul></li>
+<li>优势
+<ul>
+<li>在大多数情况下能找到最优分割点</li>
+<li>大多数情况下降低了时延和能耗</li>
+<li>能在网络带宽变化时保持时延的稳定</li>
+<li>能适应数据中心的载荷变化</li>
+<li>提高数据中心吞吐量</li>
+</ul></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/23/Algorithm-Note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -527,12 +642,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
