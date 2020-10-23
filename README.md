@@ -1,1 +1,1 @@
-## Welcome to Dean's Blog
+## Dean's Blog
