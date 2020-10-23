@@ -72,7 +72,11 @@
   </style>
 </noscript>
 
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -170,7 +174,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-10-23 20:45:45 / Modified: 20:49:28" itemprop="dateCreated datePublished" datetime="2020-10-23T20:45:45+08:00">2020-10-23</time>
+              <time title="Created: 2020-10-23 20:45:45 / Modified: 21:12:40" itemprop="dateCreated datePublished" datetime="2020-10-23T20:45:45+08:00">2020-10-23</time>
             </span>
 
           
@@ -184,8 +188,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Algo-Note"><a href="#Algo-Note" class="headerlink" title="Algo Note"></a>Algo Note</h1><h2 id="1-Binary-Search"><a href="#1-Binary-Search" class="headerlink" title="1. Binary Search"></a>1. Binary Search</h2><h3 id="Basic-Notes"><a href="#Basic-Notes" class="headerlink" title="Basic Notes"></a>Basic Notes</h3><p>四要素：</p>
-<ol>
+          <h1 id="algo-note">Algo Note</h1>
+<h2 id="binary-search">1. Binary Search</h2>
+<h3 id="basic-notes">Basic Notes</h3>
+<p>四要素：</p>
+<ol type="1">
 <li>左端点和右端点：决定了搜索的区间</li>
 <li>while循环的终止条件：决定了终止时左右端点的相对位置，根据初始搜索区间调整，防止漏掉元素或越界、死循环</li>
 <li>三段判断：分别与中点数值对比，对左右端点进行更新或返回（找到元素）</li>
@@ -196,67 +203,62 @@
 <li>防止溢出，更新mid：mid = left + (right - left) / 2</li>
 </ul>
 <p>三种模版（from LeetCode）</p>
-<h3 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h3><p><strong>35.搜索插入位置</strong></p>
+<h3 id="day-1">Day 1</h3>
+<p><strong>35.搜索插入位置</strong></p>
 <p>二分法</p>
 <ul>
-<li><p>在一个有序数组中找第一个大于等于 $\textit{target}$ 的下标</p>
-</li>
+<li><p>在一个有序数组中找第一个大于等于 <span class="math inline">\(\textit{target}\)</span> 的下标</p></li>
 <li><p>利用模版：vanilla+while循环外的返回值为left</p>
-<p>  vanilla情况下：</p>
+<p>vanilla情况下：</p>
 <ul>
 <li>末尾返回值为left：第一个大于target的值</li>
 <li>末尾返回值为right：最后一个小于target的值</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p><strong>69.ｘ的平方根</strong></p>
 <p>二分法</p>
 <ul>
-<li>寻找满足$k^2\le x$的最大$k$值</li>
-<li>下界为0，上界为$x$</li>
+<li>寻找满足<span class="math inline">\(k^2\le x\)</span>的最大<span class="math inline">\(k\)</span>值</li>
+<li>下界为0，上界为<span class="math inline">\(x\)</span></li>
 </ul>
 <p>数学：使用换底公式，取整数，最后稍作判断</p>
-<h3 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h3><p><strong>167.两数之和-ii-输入有序数组</strong></p>
+<h3 id="day-2">Day 2</h3>
+<p><strong>167.两数之和-ii-输入有序数组</strong></p>
 <p>二分法</p>
 <ul>
 <li>对每一个元素，只搜索其右端的元素</li>
 <li>由于数组有序，且不允许重复使用元素，在此元素右端可以使用二分搜索</li>
-<li>每次搜索的$target$是$target-arr[i]$</li>
+<li>每次搜索的<span class="math inline">\(target\)</span>是<span class="math inline">\(target-arr[i]\)</span></li>
 </ul>
 <p>双指针法</p>
 <ul>
 <li>初始时，双指针位于数组的一头一尾</li>
-<li>每次迭代测试两指针的值之和是否为target<ul>
+<li>每次迭代测试两指针的值之和是否为target
+<ul>
 <li>若较之大：右指针左移（使和减小）</li>
 <li>若较之小：左指针右移（使和增大）</li>
-</ul>
-</li>
+</ul></li>
 <li>正确性：必然有解</li>
 </ul>
 <p><strong>278.第一个错误的版本</strong></p>
 <p>二分法</p>
 <ul>
 <li>目标：找到第一个False / 最后一个True + 1</li>
-<li>设定区间为$[1,n]$</li>
+<li>设定区间为<span class="math inline">\([1,n]\)</span></li>
 <li>在vanilla基础上，删去相等返回分支，最终返回left (or right + 1)</li>
 </ul>
-<h3 id="Day-3"><a href="#Day-3" class="headerlink" title="Day 3"></a>Day 3</h3><p><strong>349.两个数组的交集</strong></p>
+<h3 id="day-3">Day 3</h3>
+<p><strong>349.两个数组的交集</strong></p>
 <p>二分法</p>
 <ul>
-<li><p>对两个数组分别排序</p>
-</li>
+<li><p>对两个数组分别排序</p></li>
 <li><p>随意选择一个数组（应该选择较短的那个）进行遍历</p>
 <ul>
-<li><p>对每个元素，二分搜索另一个数组</p>
-</li>
-<li><p>若此元素在另一个数组中也存在，判断其是否已经出现在结果数组中（有序性）</p>
-</li>
-<li><p>若重复则抛弃</p>
-</li>
-</ul>
-</li>
-<li><p><strong>nlogn</strong></p>
-</li>
+<li><p>对每个元素，二分搜索另一个数组</p></li>
+<li><p>若此元素在另一个数组中也存在，判断其是否已经出现在结果数组中（有序性）</p></li>
+<li><p>若重复则抛弃</p></li>
+</ul></li>
+<li><p><strong>nlogn</strong></p></li>
 </ul>
 <p>Hash or Set法</p>
 <ul>
@@ -269,11 +271,11 @@
 <ul>
 <li>利用有序性</li>
 <li>对两个数组进行排序</li>
-<li>迭代两个数组，短的数组结束时结束<ul>
+<li>迭代两个数组，短的数组结束时结束
+<ul>
 <li>若两指针相等，则加入结果</li>
 <li>若不等，移动值较小的指针</li>
-</ul>
-</li>
+</ul></li>
 <li><strong>nlogn</strong></li>
 </ul>
 <p><strong>367.有效的完全平方数</strong></p>
@@ -290,10 +292,11 @@
 <p><strong>441.排列硬币</strong></p>
 <p>二分法</p>
 <ul>
-<li>寻找满足$\dfrac{(1+k)\times k}{2}\le x$的最大$k$值</li>
+<li>寻找满足<span class="math inline">\(\dfrac{(1+k)\times k}{2}\le x\)</span>的最大<span class="math inline">\(k\)</span>值</li>
 <li>注意计算判断值时要使用long类型，否则溢出</li>
 </ul>
-<h3 id="Day-4"><a href="#Day-4" class="headerlink" title="Day 4"></a>Day 4</h3><p><strong>392. 判断子序列</strong></p>
+<h3 id="day-4">Day 4</h3>
+<p><strong>392. 判断子序列</strong></p>
 <p>双指针法</p>
 <ul>
 <li>根据子序列的定义，一旦s中的元素与t中的元素对应，则只需要考虑t在此后的元素了（贪心）</li>
@@ -339,7 +342,8 @@
 <ul>
 <li>LeetCode模版2（适用于访问右边值的判断）</li>
 </ul>
-<h3 id="Day-5"><a href="#Day-5" class="headerlink" title="Day 5"></a>Day 5</h3><p><strong>1237. 找出给定方程的正整数解</strong></p>
+<h3 id="day-5">Day 5</h3>
+<p><strong>1237. 找出给定方程的正整数解</strong></p>
 <p>二分法</p>
 <ul>
 <li>由于函数在两个方向上的偏导数都为正，按行（y）搜索时，可以不断收缩右边界</li>
@@ -429,17 +433,18 @@
 
       
           <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
+<h3 id="run-server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
+<h3 id="generate-static-files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
       
@@ -527,7 +532,7 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -611,6 +616,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
