@@ -172,10 +172,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-23 23:30:48 / 修改时间：23:31:54" itemprop="dateCreated datePublished" datetime="2020-10-23T23:30:48+08:00">2020-10-23</time>
+              <time title="创建时间：2020-10-23 23:30:48" itemprop="dateCreated datePublished" datetime="2020-10-23T23:30:48+08:00">2020-10-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-26 21:59:56" itemprop="dateModified" datetime="2020-10-26T21:59:56+08:00">2020-10-26</time>
+              </span>
 
           
 
@@ -189,7 +195,7 @@
 
       
           <h1 id="paper-reading">Paper Reading</h1>
-<h2 id="neurosurgeon-asplos-2017">1. Neurosurgeon <span class="citation" data-cites="ASPLOS">@ASPLOS</span> 2017</h2>
+<h2 id="neurosurgeon-collaborative-intelligence-between-the-cloud-and-mobile-edge-asplos-2017">1. Neurosurgeon: Collaborative Intelligence Between the Cloud and Mobile Edge <span class="citation" data-cites="ASPLOS">@ASPLOS</span> 2017</h2>
 <p>研究背景：</p>
 <ul>
 <li>大量的人工智能应用采用了深度神经网络（DNN）</li>
@@ -245,6 +251,44 @@
 <li>提高数据中心吞吐量</li>
 </ul></li>
 </ul>
+<h2 id="aaiot-accelerating-artificial-intelligence-in-iot-systems-ieee-wcl-2019">2. AAIoT: Accelerating Artificial Intelligence in IoT Systems <span class="citation" data-cites="IEEE">@IEEE</span> WCL 2019</h2>
+<p>背景</p>
+<ul>
+<li>目前的offloading模型一般只考虑两层结构，即端-云结构</li>
+<li>本文提出一种动态规划算法，以最小化系统响应时间为目标，分割神经网络并分配到一个多层IoT设备构成的网络上</li>
+</ul>
+<p>模型</p>
+<ul>
+<li><p>每个设备：接受输入并将输出传给下一个设备</p></li>
+<li><p>神经网络的输入在第一个设备输入，也必须将输出传回第一个设备</p></li>
+<li><p>神经网络的单层是不可分割的、每层的计算是有顺序的</p></li>
+<li><p>处于更高层级的设备（往往）拥有更强的算力，因此将计算任务部分转移到高层设备是以通信时延换取计算时延的减少，而往低层设备转移则不会带来任何好处：神经网络层的分配是有序的（算力低--&gt;高）</p></li>
+<li><p>优化目标： <span class="math display">\[
+  \mathcal{T}_{\text{calcu}}=\sum_{i=1}^nc_i^{a_i}
+  \]</span></p>
+<p><span class="math display">\[
+  \mathcal{T}_{\text{trans}}=\sum_{i=1}^n\sum_{j=a_{i-1}}^{a_i-1}(s_i+s_{n+1})/p_j\quad\quad(a_0=1)
+  \]</span></p>
+<p><span class="math display">\[
+  \mathcal{T}=\mathcal{T}_{\text{calcu}}+\mathcal{T}_{\text{trans}}
+  \]</span></p>
+<p>其中，<span class="math inline">\(c_i\)</span>为第<span class="math inline">\(i\)</span>层在设备<span class="math inline">\(a_i\)</span>上的计算时延，<span class="math inline">\(a_i\)</span>为第<span class="math inline">\(i\)</span>被分配到的设备，<span class="math inline">\(a_{i+1}\ge a_i\)</span>是规定的层级顺序，<span class="math inline">\(s_i\)</span>为第<span class="math inline">\(i\)</span>层的输入数据大小，<span class="math inline">\(s_{n+1}\)</span>为输出结果大小，<span class="math inline">\(p_j\)</span>为<span class="math inline">\(d_j\)</span>与<span class="math inline">\(d_{j+1}\)</span>之间的传输带宽</p></li>
+</ul>
+<p>算法</p>
+<ul>
+<li>目标：给定每层在不同设备上的执行时间<span class="math inline">\(C\)</span>，每层输出数据的大小<span class="math inline">\(S\)</span>，每个设备之间的带宽<span class="math inline">\(P\)</span>，找到一个分配<span class="math inline">\(A\)</span>使得<span class="math inline">\(\mathcal{T}\)</span>最小</li>
+<li>动态规划：
+<ul>
+<li>状态：<span class="math inline">\(h_i^j\)</span>，第<span class="math inline">\(i\)</span>层的输入被传输到设备<span class="math inline">\(j\)</span>上的<strong>最小响应时间</strong>，当<span class="math inline">\(i=n+1\)</span>时表示网络输出的传输最小相应时间</li>
+<li>状态初始化</li>
+<li>状态转移</li>
+</ul></li>
+</ul>
+<p>改进方向</p>
+<ul>
+<li>考虑一个设备被多个低层设备共享时的情况：多任务、资源不独占</li>
+<li>优化能耗</li>
+</ul>
 
       
     </div>
@@ -287,10 +331,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-23 20:45:45 / 修改时间：21:12:40" itemprop="dateCreated datePublished" datetime="2020-10-23T20:45:45+08:00">2020-10-23</time>
+              <time title="创建时间：2020-10-23 20:45:45" itemprop="dateCreated datePublished" datetime="2020-10-23T20:45:45+08:00">2020-10-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-26 22:00:24" itemprop="dateModified" datetime="2020-10-26T22:00:24+08:00">2020-10-26</time>
+              </span>
 
           
 
@@ -303,7 +353,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="algo-note">Algo Note</h1>
+          <h1 id="algorithm-note">Algorithm Note</h1>
 <h2 id="binary-search">1. Binary Search</h2>
 <h3 id="basic-notes">Basic Notes</h3>
 <p>四要素：</p>
@@ -489,6 +539,103 @@
 </ul>
 <p>分治法</p>
 <p>倒序遍历</p>
+<ul>
+<li>根据两方向偏导数符号相同</li>
+<li>上一行第一个负数的位置必然比下一行大</li>
+<li>线性复杂度</li>
+</ul>
+<h3 id="day-6">Day 6</h3>
+<p><strong>74. 搜索二维矩阵</strong></p>
+<p>二分法</p>
+<ul>
+<li>根据矩阵元素排列特征：直接展开为一维数组二分</li>
+<li>中点元素：<span class="math inline">\(mat[mid / n][mid\% n]\)</span></li>
+</ul>
+<p>*<strong>275. H指数 II</strong></p>
+<p>二分法</p>
+<ul>
+<li>根据题意：寻找<strong>第一个</strong><span class="math inline">\(i\)</span>使得<span class="math inline">\(cite[i]\ge n-i\)</span>，并返回<span class="math inline">\(n-i\)</span>，即H指数</li>
+</ul>
+<p><strong>34. 在排序数组中查找元素的第一个和最后一个位置</strong></p>
+<p>二分法</p>
+<ul>
+<li>寻找左右边界即可</li>
+</ul>
+<p><strong>162. 寻找峰值</strong></p>
+<p>二分法</p>
+<ul>
+<li>虽然存在多个峰值，但输出任意即可，因此使用852的代码</li>
+<li>注意右边界应该设置为倒数第二个元素（闭区间&amp;&amp;不保证峰值不在边界）</li>
+</ul>
+<p><strong>240. 搜索二维矩阵 II</strong></p>
+<p>双指针法</p>
+<ul>
+<li>类似1237的双指针法（矩阵形态一致）</li>
+<li>注意指针初值及终止条件即可</li>
+</ul>
+<h3 id="day-7">Day 7</h3>
+<p><strong>Review</strong></p>
+<p>普通二分：寻找指定元素</p>
+<ul>
+<li>用于加速有序序列的查找</li>
+</ul>
+<p>第一个/最后一个：</p>
+<ul>
+<li>返回值的不同有所不同</li>
+</ul>
+<p>最左/最右：</p>
+<ul>
+<li>修改更新边界的语句</li>
+</ul>
+<p>访问相邻元素的查找：</p>
+<ul>
+<li>注意边界、区间和判断语句</li>
+</ul>
+<p>不完全单调：</p>
+<ul>
+<li>局部单调二分</li>
+</ul>
+<h3 id="day-8">Day 8</h3>
+<p>*<strong>209. 长度最小的子数组</strong></p>
+<p>前缀和+二分法</p>
+<ul>
+<li><p><strong>前缀和</strong>：适用于区间&amp;求和问题，前缀和数组单调递增，可使用二分查找降低复杂度</p>
+<p><span class="math inline">\(sum[j]-sum[i]=\sum[i,j),\quad i\le j\)</span></p></li>
+<li><p>据题意，需要找到区间<span class="math inline">\([i,j)\)</span>使得<span class="math inline">\(sum[j]-sum[i]\ge s\)</span>且区间长度最小</p></li>
+<li><p>遍历左端点<span class="math inline">\(i\)</span>，每次迭代固定左端点，二分查找<span class="math inline">\(j\)</span>使其为第一个<span class="math inline">\(sum[j]\ge sum[i]+s\)</span>的下标</p></li>
+<li><p>答案为迭代中产生的最小长度</p></li>
+<li><p>两个细节</p>
+<ol type="1">
+<li>查找<span class="math inline">\(j\)</span>时只需要从<span class="math inline">\(i+1\)</span>开始</li>
+<li>当查找到的<span class="math inline">\(j\)</span>已经在最右端，但之前并未找到结果，则可跳出循环返回0</li>
+</ol></li>
+</ul>
+<p>双指针法</p>
+<ul>
+<li>根据和的单调性，调整左右指针，并取最小区间大小</li>
+<li>区间<span class="math inline">\([left,right)\)</span>，初值为0</li>
+<li>若当前和小于目标值，加右端点并右移<span class="math inline">\(right\)</span></li>
+<li>若当前和大于等于目标值，更新最小区间长度，减左端点并右移<span class="math inline">\(left\)</span></li>
+<li>停止条件：和小于目标值但<span class="math inline">\(right\)</span>已经在最右端了</li>
+</ul>
+<p>*<strong>475. 供暖器</strong></p>
+<p>二分法</p>
+<ul>
+<li>先排序以确保单调性</li>
+<li>对一间房子而言，要么由左边的供暖要么由右边的供暖</li>
+<li>对每一间房子：
+<ul>
+<li>找到第一个位置大于等于它的供暖器，同时也可以得到最后一个位置小于它的供暖器</li>
+<li>取距离的最小值作为离它最近的供暖器距离</li>
+<li>注意找到的位置为边界时的特殊处理（均置为最大整数，且两种情况不同时出现）</li>
+</ul></li>
+<li>最后取这些最小值的最大值即为”最小半径“</li>
+</ul>
+<p>滑动窗口</p>
+<ul>
+<li>对每个房子：找最接近的供暖器供暖（并计算半径），若右边的供暖器更近，则更新供暖器指针</li>
+<li>所有半径的最大值为答案</li>
+</ul>
 
       
     </div>
