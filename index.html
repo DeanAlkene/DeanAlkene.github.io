@@ -339,7 +339,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-26 22:00:24" itemprop="dateModified" datetime="2020-10-26T22:00:24+08:00">2020-10-26</time>
+                <time title="修改时间：2020-10-29 22:22:19" itemprop="dateModified" datetime="2020-10-29T22:22:19+08:00">2020-10-29</time>
               </span>
 
           
@@ -353,9 +353,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="algorithm-note">Algorithm Note</h1>
-<h2 id="binary-search">1. Binary Search</h2>
-<h3 id="basic-notes">Basic Notes</h3>
+          <ul>
+<li><h1 id="algorithm-note">Algorithm Note</h1>
+<p>## 1. Binary Search</p>
+<p>### Basic Notes</p>
 <p>四要素：</p>
 <ol type="1">
 <li>左端点和右端点：决定了搜索的区间</li>
@@ -368,7 +369,7 @@
 <li>防止溢出，更新mid：mid = left + (right - left) / 2</li>
 </ul>
 <p>三种模版（from LeetCode）</p>
-<h3 id="day-1">Day 1</h3>
+<p>### Day 1</p>
 <p><strong>35.搜索插入位置</strong></p>
 <p>二分法</p>
 <ul>
@@ -387,7 +388,7 @@
 <li>下界为0，上界为<span class="math inline">\(x\)</span></li>
 </ul>
 <p>数学：使用换底公式，取整数，最后稍作判断</p>
-<h3 id="day-2">Day 2</h3>
+<p>### Day 2</p>
 <p><strong>167.两数之和-ii-输入有序数组</strong></p>
 <p>二分法</p>
 <ul>
@@ -412,7 +413,7 @@
 <li>设定区间为<span class="math inline">\([1,n]\)</span></li>
 <li>在vanilla基础上，删去相等返回分支，最终返回left (or right + 1)</li>
 </ul>
-<h3 id="day-3">Day 3</h3>
+<p>### Day 3</p>
 <p><strong>349.两个数组的交集</strong></p>
 <p>二分法</p>
 <ul>
@@ -460,7 +461,7 @@
 <li>寻找满足<span class="math inline">\(\dfrac{(1+k)\times k}{2}\le x\)</span>的最大<span class="math inline">\(k\)</span>值</li>
 <li>注意计算判断值时要使用long类型，否则溢出</li>
 </ul>
-<h3 id="day-4">Day 4</h3>
+<p>### Day 4</p>
 <p><strong>392. 判断子序列</strong></p>
 <p>双指针法</p>
 <ul>
@@ -507,7 +508,7 @@
 <ul>
 <li>LeetCode模版2（适用于访问右边值的判断）</li>
 </ul>
-<h3 id="day-5">Day 5</h3>
+<p>### Day 5</p>
 <p><strong>1237. 找出给定方程的正整数解</strong></p>
 <p>二分法</p>
 <ul>
@@ -544,7 +545,7 @@
 <li>上一行第一个负数的位置必然比下一行大</li>
 <li>线性复杂度</li>
 </ul>
-<h3 id="day-6">Day 6</h3>
+<p>### Day 6</p>
 <p><strong>74. 搜索二维矩阵</strong></p>
 <p>二分法</p>
 <ul>
@@ -573,7 +574,7 @@
 <li>类似1237的双指针法（矩阵形态一致）</li>
 <li>注意指针初值及终止条件即可</li>
 </ul>
-<h3 id="day-7">Day 7</h3>
+<p>### Day 7</p>
 <p><strong>Review</strong></p>
 <p>普通二分：寻找指定元素</p>
 <ul>
@@ -595,7 +596,7 @@
 <ul>
 <li>局部单调二分</li>
 </ul>
-<h3 id="day-8">Day 8</h3>
+<p>### Day 8</p>
 <p>*<strong>209. 长度最小的子数组</strong></p>
 <p>前缀和+二分法</p>
 <ul>
@@ -635,6 +636,122 @@
 <ul>
 <li>对每个房子：找最接近的供暖器供暖（并计算半径），若右边的供暖器更近，则更新供暖器指针</li>
 <li>所有半径的最大值为答案</li>
+</ul>
+<p>### Day 9</p>
+<p><strong>875. 爱吃香蕉的珂珂</strong></p>
+<p>二分法</p>
+<ul>
+<li>找到最小的K使得<span class="math inline">\(\sum_i\lceil\dfrac{sum[i]}{K}\rceil\le H\)</span></li>
+<li>注意到向上取整构成了一个单调<strong>非增</strong>序列</li>
+<li>使用找左边界的二分法，每次检查取整之和与<span class="math inline">\(H\)</span>的关系缩小范围</li>
+<li>注意：上取整计算方法为<code>(a + b - 1) / b</code></li>
+</ul>
+<p><strong>1283. 使结果不超过阈值的最小除数</strong></p>
+<p>二分法</p>
+<ul>
+<li>与<strong>875</strong>完全一致</li>
+</ul>
+<p>*<strong>1590. 使数组和能被 P 整除</strong></p>
+<p>前缀和+Hash+数学</p>
+<ul>
+<li>找到最小区间<span class="math inline">\([i,j)\)</span>使得<span class="math inline">\([sum-\sum[i,j)]\%p=0\)</span>，实际上是同余问题</li>
+<li>先判断数组和是否能被整除或小于除数（无解）</li>
+<li>若数组和<span class="math inline">\(sum\%p\neq 0\)</span>，令之为<span class="math inline">\(mod\)</span>，问题转化为求一个最小区间<span class="math inline">\([i,j)\)</span>其和能被<span class="math inline">\(p\)</span>整除</li>
+<li>维护一个Hash表，记录余数为key时离当前最近的位置，枚举右端点计算前缀和及它的余数<span class="math inline">\(curMod\)</span>，并更新Hash表使得<span class="math inline">\(curMod\)</span>对应位置最近</li>
+<li>所要寻找的<span class="math inline">\(targetMod\)</span>为
+<ul>
+<li>若<span class="math inline">\(curMod\ge mod\)</span>，<span class="math inline">\(curMod-mod\)</span></li>
+<li>若<span class="math inline">\(curMod&lt;mod\)</span>，<span class="math inline">\(p+curMod-mod\)</span>（此时<span class="math inline">\(curMod-mod&lt;0\)</span>）</li>
+</ul></li>
+<li>若能找到则更新最小区间</li>
+<li>注意：Hash表初值，余数为0的位置为0（迭代从前缀数组下标为1处开始）</li>
+</ul>
+<p>*<strong>974. 和可被 K 整除的子数组</strong></p>
+<p>前缀和+Hash+数学</p>
+<ul>
+<li>求能被k整除的区间总数</li>
+<li>即对于区间<span class="math inline">\([i,j)\)</span>，<span class="math inline">\(sum[i]\%K=sum[j]\%K\)</span></li>
+<li>维护Hash表，记录当前位置之前余数为<span class="math inline">\(key\)</span>的子数组数，初值余数为0的个数为1（前缀数组位置0处取余为0）</li>
+<li>枚举右端点，计算前缀和及对应余数
+<ul>
+<li>注意：C++中对负数取余还是负数，为统一，取余写作<code>(a % b + b) % b</code></li>
+</ul></li>
+<li>若Hash表中能找到当前前缀和的余数，则更新答案，后更新Hash表，否则新增<span class="math inline">\(key\)</span>为余数个数为1的项</li>
+</ul>
+<p>### Day 10</p>
+<p>*<strong>1011. 在 D 天内送达包裹的能力</strong></p>
+<p>二分法</p>
+<ul>
+<li>找到一个最小的每次运输量，能将传送带上的货物划分为小于等于D堆（连续划分）</li>
+<li>注意到运输量越大、划分的堆数越少且不同的运输量可能对应同一划分数，即为单调不增序列</li>
+<li>对运输量进行二分，左端点为最大货物重量、右端点为货物总重量</li>
+<li>每次检测<span class="math inline">\(mid\)</span>的运输量下能划分为多少堆（遍历统计）</li>
+<li>注意：采用插板法划分时，最终区间数=板数+1</li>
+</ul>
+<p>*<strong>1292. 元素和小于等于阈值的正方形的最大边长</strong></p>
+<p>二维前缀和+二分/枚举剪枝/滑动窗口</p>
+<ul>
+<li><strong>二维前缀和</strong>：对于二维矩阵<span class="math inline">\(mat_{m\times n}\)</span>，计算每个位置左上方子矩阵的元素和
+<ul>
+<li>区间<span class="math inline">\([i_1,i_2)[j_1,j_2)\)</span>为<span class="math inline">\(mat[i_1:i_2-1][j_1:j_2-1]\)</span>的和</li>
+<li>前缀和矩阵<span class="math inline">\(p[i][j]\)</span>的值：区间<span class="math inline">\([0,i)[0,j)\)</span>的和（<span class="math inline">\(i\in[0,m],j\in[0,n]\)</span>，当<span class="math inline">\(i\)</span>或<span class="math inline">\(j\)</span>为0时，矩阵值为0）</li>
+<li>初始化：<span class="math inline">\(p[i][j]=p[i-1][j]+p[i][j-1]-p[i-1][j-1]+mat[i-1][j-1]\)</span></li>
+<li>求任意子矩阵元素和<span class="math inline">\(\sum[i_1,i_2)[j_1,j_2)=p[i_2][j_2]-p[i_1][j_2]-p[i_2][j_1]+p[i_1][j_1]\)</span></li>
+</ul></li>
+<li>二分法：随着边长的增加<span class="math inline">\(1\rightarrow\min(m,n)\)</span>，正方形元素和小于等于阈值这一命题将由T变为F
+<ul>
+<li>对边长值进行二分，每次检查是否存在满足边长为<span class="math inline">\(mid\)</span>，且和小于等于阈值的子矩阵</li>
+</ul></li>
+<li>枚举剪枝：枚举每一个元素作为左上角点，固定此点，枚举边长并测试
+<ol type="1">
+<li>若在一次边长枚举中，和已经超过阈值，则不需要再枚举（矩阵值全正）</li>
+<li>边长枚举的起始点为目前的最大边长+1</li>
+</ol></li>
+<li>滑动窗口：沿着所有斜率为-1的线枚举左上、右下端点的滑动窗口
+<ul>
+<li>若滑动窗口的和大于阈值，则收缩左端点</li>
+<li>否则扩张右端点</li>
+</ul></li>
+</ul>
+<p>### Day 11</p>
+<p>*<strong>1482. 制作 m 束花所需的最少天数</strong></p>
+<p>二分法</p>
+<ul>
+<li>给定开花日期，找最少天数，获得<span class="math inline">\(m\)</span>个不相交的、长度<span class="math inline">\(\ge k\)</span>的连续子区间</li>
+<li>使对天数进行二分（区间：最小到最大开花日期），天数对是否能满足要求呈T-&gt;F序列</li>
+<li>每次检查给定<span class="math inline">\(mid\)</span>天能获得的满足要求的区间数，并与目标对比即可</li>
+</ul>
+<p>*<strong>153. 寻找旋转排序数组中的最小值</strong></p>
+<ul>
+<li>数组的特性：分两段单调递增，左端恒大于右端</li>
+<li>若某元素小于第一个元素的值，其必在右端序列中</li>
+</ul>
+<p>二分法1</p>
+<ul>
+<li>对每个<span class="math inline">\(mid\)</span>检查其与第一个元素值的关系</li>
+<li>若<span class="math inline">\(mid\)</span>在右端，则收缩右边界，否则收缩左边界</li>
+<li>若采用闭区间二分，返回<span class="math inline">\(left\)</span>对应元素</li>
+<li>注意数组长度为0&amp;没有旋转（在0处旋转）的特殊情况</li>
+</ul>
+<p>二分法2</p>
+<ul>
+<li>对此类数组中任意的一个区间，只有以下三种情况
+<ol type="1">
+<li><span class="math inline">\(left\le mid&lt; right\)</span></li>
+<li><span class="math inline">\(left \le mid \ge right\)</span></li>
+<li><span class="math inline">\(left\ge mid&lt; right\)</span></li>
+</ol></li>
+<li>对于情况1、3，应该收缩右端点（包含<span class="math inline">\(mid\)</span>，对闭区间二分时，数组的特性保证不会死循环）</li>
+<li>对于情况2，收缩左端点</li>
+<li>结果应该是<span class="math inline">\(right\)</span>对应的值</li>
+</ul>
+<p>*<strong>33. 搜索旋转排序数组</strong></p>
+<p>二分法</p>
+<ul>
+<li>对任意一个区间，其必然部分单调</li>
+<li>对于二分过程中的<span class="math inline">\(mid\)</span>，若其值<strong>不小于</strong>左端点，则<span class="math inline">\([left,mid]\)</span>单调递增；若其值<strong>不大于</strong>右端点，则<span class="math inline">\([mid,right]\)</span>单调递增</li>
+<li>同理，也能判断<span class="math inline">\(target\)</span>在区间中是否处于单调序列，并配合与<span class="math inline">\(mid\)</span>的值收缩区间边界</li>
+</ul></li>
 </ul>
 
       
