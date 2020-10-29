@@ -339,7 +339,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-29 22:22:19" itemprop="dateModified" datetime="2020-10-29T22:22:19+08:00">2020-10-29</time>
+                <time title="修改时间：2020-10-29 22:25:47" itemprop="dateModified" datetime="2020-10-29T22:25:47+08:00">2020-10-29</time>
               </span>
 
           
@@ -353,10 +353,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ul>
-<li><h1 id="algorithm-note">Algorithm Note</h1>
-<p>## 1. Binary Search</p>
-<p>### Basic Notes</p>
+          <h1 id="algorithm-note">Algorithm Note</h1>
+<h2 id="binary-search">1. Binary Search</h2>
+<h3 id="basic-notes">Basic Notes</h3>
 <p>四要素：</p>
 <ol type="1">
 <li>左端点和右端点：决定了搜索的区间</li>
@@ -369,7 +368,7 @@
 <li>防止溢出，更新mid：mid = left + (right - left) / 2</li>
 </ul>
 <p>三种模版（from LeetCode）</p>
-<p>### Day 1</p>
+<h3 id="day-1">Day 1</h3>
 <p><strong>35.搜索插入位置</strong></p>
 <p>二分法</p>
 <ul>
@@ -388,7 +387,7 @@
 <li>下界为0，上界为<span class="math inline">\(x\)</span></li>
 </ul>
 <p>数学：使用换底公式，取整数，最后稍作判断</p>
-<p>### Day 2</p>
+<h3 id="day-2">Day 2</h3>
 <p><strong>167.两数之和-ii-输入有序数组</strong></p>
 <p>二分法</p>
 <ul>
@@ -413,7 +412,7 @@
 <li>设定区间为<span class="math inline">\([1,n]\)</span></li>
 <li>在vanilla基础上，删去相等返回分支，最终返回left (or right + 1)</li>
 </ul>
-<p>### Day 3</p>
+<h3 id="day-3">Day 3</h3>
 <p><strong>349.两个数组的交集</strong></p>
 <p>二分法</p>
 <ul>
@@ -461,7 +460,7 @@
 <li>寻找满足<span class="math inline">\(\dfrac{(1+k)\times k}{2}\le x\)</span>的最大<span class="math inline">\(k\)</span>值</li>
 <li>注意计算判断值时要使用long类型，否则溢出</li>
 </ul>
-<p>### Day 4</p>
+<h3 id="day-4">Day 4</h3>
 <p><strong>392. 判断子序列</strong></p>
 <p>双指针法</p>
 <ul>
@@ -508,7 +507,7 @@
 <ul>
 <li>LeetCode模版2（适用于访问右边值的判断）</li>
 </ul>
-<p>### Day 5</p>
+<h3 id="day-5">Day 5</h3>
 <p><strong>1237. 找出给定方程的正整数解</strong></p>
 <p>二分法</p>
 <ul>
@@ -545,7 +544,7 @@
 <li>上一行第一个负数的位置必然比下一行大</li>
 <li>线性复杂度</li>
 </ul>
-<p>### Day 6</p>
+<h3 id="day-6">Day 6</h3>
 <p><strong>74. 搜索二维矩阵</strong></p>
 <p>二分法</p>
 <ul>
@@ -574,7 +573,7 @@
 <li>类似1237的双指针法（矩阵形态一致）</li>
 <li>注意指针初值及终止条件即可</li>
 </ul>
-<p>### Day 7</p>
+<h3 id="day-7">Day 7</h3>
 <p><strong>Review</strong></p>
 <p>普通二分：寻找指定元素</p>
 <ul>
@@ -596,7 +595,7 @@
 <ul>
 <li>局部单调二分</li>
 </ul>
-<p>### Day 8</p>
+<h3 id="day-8">Day 8</h3>
 <p>*<strong>209. 长度最小的子数组</strong></p>
 <p>前缀和+二分法</p>
 <ul>
@@ -637,7 +636,7 @@
 <li>对每个房子：找最接近的供暖器供暖（并计算半径），若右边的供暖器更近，则更新供暖器指针</li>
 <li>所有半径的最大值为答案</li>
 </ul>
-<p>### Day 9</p>
+<h3 id="day-9">Day 9</h3>
 <p><strong>875. 爱吃香蕉的珂珂</strong></p>
 <p>二分法</p>
 <ul>
@@ -678,7 +677,7 @@
 </ul></li>
 <li>若Hash表中能找到当前前缀和的余数，则更新答案，后更新Hash表，否则新增<span class="math inline">\(key\)</span>为余数个数为1的项</li>
 </ul>
-<p>### Day 10</p>
+<h3 id="day-10">Day 10</h3>
 <p>*<strong>1011. 在 D 天内送达包裹的能力</strong></p>
 <p>二分法</p>
 <ul>
@@ -713,7 +712,7 @@
 <li>否则扩张右端点</li>
 </ul></li>
 </ul>
-<p>### Day 11</p>
+<h3 id="day-11">Day 11</h3>
 <p>*<strong>1482. 制作 m 束花所需的最少天数</strong></p>
 <p>二分法</p>
 <ul>
@@ -751,7 +750,6 @@
 <li>对任意一个区间，其必然部分单调</li>
 <li>对于二分过程中的<span class="math inline">\(mid\)</span>，若其值<strong>不小于</strong>左端点，则<span class="math inline">\([left,mid]\)</span>单调递增；若其值<strong>不大于</strong>右端点，则<span class="math inline">\([mid,right]\)</span>单调递增</li>
 <li>同理，也能判断<span class="math inline">\(target\)</span>在区间中是否处于单调序列，并配合与<span class="math inline">\(mid\)</span>的值收缩区间边界</li>
-</ul></li>
 </ul>
 
       
